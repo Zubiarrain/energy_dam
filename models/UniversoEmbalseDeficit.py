@@ -17,9 +17,9 @@ class UniversoEmbalseDeficit(UniversoEmbalse):
 if __name__ == "__main__":
 
     u = UniversoEmbalseDeficit(
-        consigna_range=[5,5,5],
-        n_range=[176,176,0.5],
-        rendimiento_range=[0.9,0.9,0.01],
+        consigna_range=[5,20,5],
+        n_range=[170,180,0.5],
+        rendimiento_range=[0.89,0.92,0.01],
         potencia_instalada=950
     )
 

@@ -270,17 +270,18 @@ class CalculoTotal():
 if __name__ == '__main__':
 
     # --------------- CALIBRATION VARS ----------------
-    nivel_max = 160
-    nivel_min = 142
+    nivel_max = 176.5
+    nivel_min = 174.5
 
     # --------------- RUN ----------------
 
     calculo_total = CalculoTotal(
                 nivel_min=nivel_min,
-                input_data=extract_excel_data(),
+                input_data=extract_excel_data("input_energia.xlsx"),
                 nivel_max=nivel_max,
                 potencia_firme=15.91,
-                rendimiento=0.9
+                rendimiento=0.9,
+                potencia_instalada=950
                 )
     calculo_total.duracion()
 

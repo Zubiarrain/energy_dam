@@ -1,6 +1,12 @@
-import time
-from CalculoTotal import CalculoTotal
+# Python imports
+import pandas as pd
+from pandas import ExcelWriter
 import logging as log
+import time
+
+# Modules imports
+from CalculoTotal import CalculoTotal
+from helpers.help import  extract_excel_data
 from logs.logger import logger
 
 
@@ -174,13 +180,22 @@ class CalculoFalla:
 if __name__ == '__main__':
 
     falla_buscada = 5
-    nivel_min = 142
-    nivel_max = 160
+    nivel_min = 174.5
+    nivel_max = 176.5
     rendimiento = 0.9
+    potencia_instalada = 950
 
     calculo_falla = CalculoFalla(
+            input_data=extract_excel_data("input_energia.xlsx"),
             falla_buscada = falla_buscada,
             nivel_min = nivel_min,
             nivel_max=nivel_max,
-            rendimiento=rendimiento
+            rendimiento=rendimiento,
+            potencia_instalada=potencia_instalada
     )
+
+    dict = calculo_falla.calculo_total.total_data()
+    df = pd.DataFrame(dict)
+    writer = ExcelWriter("outputs/ejemplo.xlsx")
+    df.to_excel(writer, "results")
+    writer.save()
